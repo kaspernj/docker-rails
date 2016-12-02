@@ -55,5 +55,6 @@ RUN ln -s /shared/app/log /var/www/app/shared/log
 RUN ln -s /shared/sqlite/production.sqlite /var/www/app/shared/db/production.sqlite
 RUN chown -R deploy:deploy /var/www/app
 
-# Start SSH
-ENTRYPOINT ["/shared/scripts/entrypoint.rb > /shared/log/last_startup"]
+# Add the entrypoint
+ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
